@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('url');
             $table->string('descricao');
             $table->float('horas_in');
-            $table->string('status');
+            $table->enum('status', ['pendente', 'aprovado', 'rejeitado']);
             $table->string('comentario');
             $table->float('horas_out');
             $table->foreignId('categoria_id')->constrained('categorias')->cascadeOnDelete();

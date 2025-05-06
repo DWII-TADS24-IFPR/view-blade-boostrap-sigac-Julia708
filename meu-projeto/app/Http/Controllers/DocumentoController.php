@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Pessoa;
+use App\Models\Documento;
 
-class PessoaController extends Controller
+class DocumentoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $pessoas = Pessoa::all();
-        return view('pessoas.index')->with('pessoas', $pessoas);
+        //
     }
 
     /**
@@ -21,7 +21,7 @@ class PessoaController extends Controller
      */
     public function create()
     {
-        return view('pessoas.create');
+        //
     }
 
     /**
@@ -29,17 +29,7 @@ class PessoaController extends Controller
      */
     public function store(Request $request)
     {
-        $nome = $request->nome;
-        $idade = $request->idade;
-        $cpf = $request->cpf;
-
-        $pessoa = new Pessoa();
-        $pessoa->nome = $nome;
-        $pessoa->idade = $idade;
-        $pessoa->cpf = $cpf;
-        $pessoa->save();
-
-        return redirect()->route('pessoas.index');
+        //
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PessoaController;
+use App\Http\Controllers\AlunoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +15,9 @@ use App\Http\Controllers\PessoaController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('/pessoas', [PessoaController::class, 'index'])->name('pessoas.index');
-Route::get('/pessoas/create', [PessoaController::class, 'create']);
-Route::post("/pessoas", [PessoaController::class, 'store'])->name('pessoas.store');
+Route::get('/alunos', [AlunoController::class, 'index'])->name('alunos.index');
+Route::get('/alunos/create', [AlunoController::class, 'create']);
+Route::post("/alunos", [AlunoController::class, 'store'])->name('alunos.store');
