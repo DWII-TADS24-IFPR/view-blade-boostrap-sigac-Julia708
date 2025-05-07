@@ -18,6 +18,5 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/alunos', [AlunoController::class, 'index'])->name('alunos.index');
-Route::get('/alunos/create', [AlunoController::class, 'create']);
-Route::post("/alunos", [AlunoController::class, 'store'])->name('alunos.store');
+
+Route::resource('alunos', AlunoController::class);

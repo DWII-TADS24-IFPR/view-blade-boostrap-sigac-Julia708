@@ -13,7 +13,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $categorias = Categoria::all();
+        return view('categorias.index')->with('categorias',$categorias);
     }
 
     /**
@@ -21,7 +22,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('categoria.create');
     }
 
     /**
@@ -29,7 +30,12 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = new Categoria();
+        $categoria->nome = $request->$nome;
+        $categoria->max_horas = $request->$max_horas;
+        $categoria->save();
+
+        return redirect()->route('categorias.index');
     }
 
     /**
@@ -37,7 +43,8 @@ class CategoriaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $categoria = Categoria::findOrFail($id);
+        return view('$categorias.show', compact('categoria'));
     }
 
     /**
@@ -45,7 +52,8 @@ class CategoriaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categoria = Categoria::findOrFail($id);
+        return view('$categorias.edit', compact('categoria'));
     }
 
     /**
@@ -53,7 +61,12 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $categoria = Categoria::findOrFalil($id);
+        $categoria->nome = $request->$nome;
+        $categoria->max_horas = $request->$max_horas;
+        $categoria->save();
+
+        return redirect()->route('categorias.index');
     }
 
     /**
@@ -61,6 +74,9 @@ class CategoriaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $categoria = Categoria::findOrFail($id);
+        $categoria->delete();
+
+        return redirect()->route('categorias.index');
     }
 }

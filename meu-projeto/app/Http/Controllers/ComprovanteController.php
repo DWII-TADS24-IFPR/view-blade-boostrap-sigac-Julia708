@@ -13,7 +13,8 @@ class ComprovanteController extends Controller
      */
     public function index()
     {
-        //
+        $comprovantes = Comprovante::all();
+        return view('comprovantes.index')->with('alunos', $alunos);
     }
 
     /**
@@ -21,7 +22,7 @@ class ComprovanteController extends Controller
      */
     public function create()
     {
-        //
+        return view('comprovantes.create');
     }
 
     /**
@@ -29,7 +30,7 @@ class ComprovanteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

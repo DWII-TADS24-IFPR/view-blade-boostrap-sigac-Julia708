@@ -1,29 +1,30 @@
-<div>
-    <!-- Simplicity is the consequence of refined emotions. - Jean D'Alembert -->
-</div>
-
 @extends('layouts.app')
 
 @section('content')
 <h1>Lista de Alunos</h1>
 
-<a href="">Cadastrar Novo Aluno</a>
+<a href="{{ route('alunos.create') }}">Cadastrar Novo Aluno</a>
 
-<table>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nome</th>
+      <th scope="col">CPF</th>
+      <th scope="col">Curso</th>
+      <th scope="col">Turma</th>
+    </tr>
+  </thead>
+
     <thead>
         <tr>
-            <th>Nome</th>
-            <th>CPF</th>
-            <th>Email</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
     <tbody>
         @foreach($alunos as $aluno)
             <tr>
                 <td>{{ $aluno->nome }}</td>
                 <td>{{ $aluno->cpf }}</td>
-                <td>{{ $aluno->email }}</td>
+                <td>{{ $aluno->Curso }}</td>
+                <td>{{ $aluno->Turma }}</td>
                 <td>
                     <a href="{{ route('alunos.edit', $aluno->id) }}">Editar</a>
                     <form action="{{ route('alunos.destroy', $aluno->id) }}" method="POST" style="display:inline;">

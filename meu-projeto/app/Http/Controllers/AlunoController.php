@@ -22,7 +22,7 @@ class AlunoController extends Controller
      */
     public function create()
     {
-        return view('aluno.create');
+        return view('alunos.create');
     }
 
     /**
@@ -30,6 +30,10 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {
+        $nome = $request->nome;
+        $cpf = $request->cpf;
+        $email = $request->email;
+
         $aluno = new Aluno();
         $aluno->nome = $request->$nome;
         $aluno->cpf = $request->$cpf;

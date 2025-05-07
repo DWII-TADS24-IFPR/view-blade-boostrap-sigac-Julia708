@@ -12,10 +12,25 @@
       <a class="nav-link" href="{{ route('alunos.index') }}">Alunos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="#">Categoria</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link disabled" href="#">Comprovante</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Curso</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Declaração</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Documento</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Nível</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Turma</a>
       </li>
     </ul>
   </div>
