@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Aluno;
+use App\Models\Curso;
+use App\Models\Turma;
 
 class AlunoController extends Controller
 {
@@ -22,23 +24,26 @@ class AlunoController extends Controller
      */
     public function create()
     {
-        return view('alunos.create');
+        $cursos = Curso::all();
+        $turmas = Turma::all();
+
+        return view('alunos.create', compact('cursos', 'turmas'));
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $nome = $request->nome;
-        $cpf = $request->cpf;
-        $email = $request->email;
-
-        $aluno = new Aluno();
-        $aluno->nome = $request->$nome;
-        $aluno->cpf = $request->$cpf;
-        $aluno->email = $request->$email;
-        $aluno->save();
+        Aluno::create([
+            'nome' => $request->nome,
+            'cpf' => $request->cpf,
+            'email' => $request->email,
+            'senha' => bcrypt($request->senha),
+            'curso_id' => $request->curso_id,
+            'turma_id' => $request->turma_id
+        ]);
 
         return redirect()->route('alunos.index');
     }
@@ -58,22 +63,22 @@ class AlunoController extends Controller
     public function edit(string $id)
     {
         $aluno = Aluno::findOrFail($id);
-        return view('alunos.edit', compact('aluno'));
+        $cursos = Curso::all();
+        $turmas = Turma::with('curso')->get();
+        return view('alunos.edit', compact('aluno', 'cursos', 'turmas'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $aluno = Aluno::findOrFail($id);
-        $aluno->nome = $request->nome;
-        $aluno->cpf = $request->cpf;
-        $aluno->email = $request->email;
-        $aluno->save();
+        $aluno->update($request->only('nome', 'cpf', 'email', 'curso_id', 'turma_id'));
 
-        return redirect()->route('alunos.index');
+        return redirect()->route('alunos.index')->with('success', 'Aluno atualizado com sucesso!');
     }
+
 
     /**
      * Remove the specified resource from storage.

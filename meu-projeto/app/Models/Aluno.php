@@ -10,10 +10,6 @@ class Aluno extends Model
     protected $table = 'alunos';
     protected $fillable = ['nome', 'cpf', 'email', 'senha', 'turma_id', 'curso_id'];
 
-    public function pessoa(){
-        return $this -> belongsTo(Pessoa::class);
-    }
-
     public function turma(){
         return $this -> belongsTo(Turma::class);
     }

@@ -10,9 +10,8 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Nome</th>
-      <th scope="col">CPF</th>
-      <th scope="col">Curso</th>
-      <th scope="col">Turma</th>
+      <th scope="col">Máximo de Horas</th>
+      <th scope="col">Id do Curso</th>
     </tr>
   </thead>
 
@@ -21,10 +20,10 @@
     <tbody>
         @foreach($categorias as $categoria)
             <tr>
+                <td>{{ $categoria->id }}</td>
                 <td>{{ $categoria->nome }}</td>
-                <td>{{ $categoria->cpf }}</td>
-                <td>{{ $categoria->Curso }}</td>
-                <td>{{ $categoria->Turma }}</td>
+                <td>{{ $categoria->max_horas }}</td>
+                <td>{{ $categoria->curso_id }}</td>
                 <td>
                     <a href="{{ route('categorias.edit', $categoria->id) }}">Editar</a>
                     <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" style="display:inline;">

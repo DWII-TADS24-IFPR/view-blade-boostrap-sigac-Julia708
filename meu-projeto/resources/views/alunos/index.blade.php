@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Lista de Alunos</h1>
-
-<a href="{{ route('alunos.create') }}">Cadastrar Novo Aluno</a>
+<h2>Lista de Alunos</h2>
 
 <table class="table">
   <thead>
@@ -21,20 +19,20 @@
     <tbody>
         @foreach($alunos as $aluno)
             <tr>
+                <td>{{ $aluno->id }}</td>
                 <td>{{ $aluno->nome }}</td>
                 <td>{{ $aluno->cpf }}</td>
-                <td>{{ $aluno->Curso }}</td>
-                <td>{{ $aluno->Turma }}</td>
+                <td>{{ $aluno->curso_id }}</td>
+                <td>{{ $aluno->turma_id }}</td>
                 <td>
-                    <a href="{{ route('alunos.edit', $aluno->id) }}">Editar</a>
-                    <form action="{{ route('alunos.destroy', $aluno->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Excluir</button>
-                    </form>
+                    <a class="btn btn-secondary" href="{{ route('alunos.edit', $aluno->id) }}">Editar</a>
+                    <a class="btn btn-info" href="">Mais informações</a>
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
+
+<a class="btn btn-primary" href="{{ route('alunos.create') }}">Cadastrar Novo Aluno</a>
+
 @endsection
