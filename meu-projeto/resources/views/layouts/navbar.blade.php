@@ -12,26 +12,26 @@
       <a class="nav-link" href="{{ route('alunos.index') }}">Alunos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Categoria</a>
+        <a class="nav-link" href="{{ route('categorias.index') }}">Categoria</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link disabled" href="{{ route('comprovantes.index') }}">Comprovante</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Comprovante</a>
+        <a class="nav-link disabled" href="{{ route('cursos.index') }}">Curso</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Curso</a>
+        <a class="nav-link disabled" href="{{ route('declaracoes.index') }}">Declaração</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Declaração</a>
+        <a class="nav-link disabled" href="{{ route('documentos.index') }}">Documento</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Documento</a>
+        <a class="nav-link disabled" href="{{ route('nivels.index') }}">Nível</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Nível</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Turma</a>
-      </li>
+        <a class="nav-link disabled" href="{{ route('turmas.index') }}">Turma</a>
+      </li> -->
     </ul>
   </div>
 </nav>

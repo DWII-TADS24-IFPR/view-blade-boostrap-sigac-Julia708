@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlunoController;
+use App\Http\Controllers\RelatorioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,10 @@ Route::get('/', function () {
 
 
 Route::resource('alunos', AlunoController::class);
+
+Route::get('/relatorios', [RelatorioController::class, 'emitirRelatorio'])->name('relatorio.emitir'); //apagar depois
+
+
+Route::get('/graficos', function (){
+    return view('grafico.index');
+})->name('graficos');
