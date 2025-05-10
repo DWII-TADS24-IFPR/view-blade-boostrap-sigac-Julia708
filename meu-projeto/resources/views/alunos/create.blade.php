@@ -1,38 +1,55 @@
 @extends('layouts.app')
 
 @section('content')
-<h2>Cadastrar Aluno</h2>
+<div class="container mt-5">
+    <h2>Cadastrar Aluno</h2>
 
-<form action="{{ route('alunos.store') }}" method="POST">
-    @csrf
-    <label>Nome:</label>
-    <input type="text" name="nome" required><br>
+    <form action="{{ route('alunos.store') }}" method="POST">
+        @csrf
+        
 
-    <label>CPF:</label>
-    <input type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required><br>
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome:</label>
+            <input type="text" name="nome" id="nome" class="form-control" placeholder="Digite seu nome" required>
+        </div>
 
-    <label>Email:</label>
-    <input type="email" name="email" required><br>
+        <div class="mb-3">
+            <label for="cpf" class="form-label">CPF:</label>
+            <input type="text" name="cpf" id="cpf" class="form-control" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="000.000.000-00" required>
+        </div>
 
-    <label>Senha:</label>
-    <input type="password" name="senha" required><br>
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail:</label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="seu.email@exemplo.com" required>
+        </div>
 
-    <label>Curso:</label>
-        <select name="curso_id" required>
-            <option value="">Selecione um curso</option>
-            @foreach ($cursos as $curso)
-                <option value="{{ $curso->id }}">{{ $curso->nome }}</option>
-            @endforeach
-        </select><br>
+        <div class="mb-3">
+            <label for="senha" class="form-label">Senha:</label>
+            <input type="password" name="senha" id="senha" class="form-control" placeholder="Digite sua senha" required>
+        </div>
 
-        <label>Turma:</label>
-        <select name="turma_id" required>
-            <option value="">Selecione uma turma</option>
-            @foreach ($turmas as $turma)
-                <option value="{{ $turma->id }}">{{ $turma->ano }}</option>
-            @endforeach
-        </select><br><br>
+        <div class="mb-3">
+            <label for="curso_id" class="form-label">Curso:</label>
+            <select name="curso_id" id="curso_id" class="form-select" required>
+                <option value="">Selecione um curso</option>
+                @foreach ($cursos as $curso)
+                    <option value="{{ $curso->id }}">{{ $curso->nome }}</option>
+                @endforeach
+            </select>
+        </div>
 
-        <button type="button" class="btn btn-success">Cadastrar</button>
-</form>
+        <div class="mb-3">
+            <label for="turma_id" class="form-label">Turma:</label>
+            <select name="turma_id" id="turma_id" class="form-select" required>
+                <option value="">Selecione uma turma</option>
+                @foreach ($turmas as $turma)
+                    <option value="{{ $turma->id }}">{{ $turma->ano }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+        <a href="{{ route('alunos.index') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
 @endsection
