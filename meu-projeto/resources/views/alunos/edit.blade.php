@@ -15,7 +15,7 @@
 
         <div class="mb-3">
             <label for="cpf" class="form-label">CPF:</label>
-            <input type="text" name="cpf" id="cpf" class="form-control" value="{{ $aluno->cpf }}" required>
+            <input type="text" name="cpf" id="cpf" class="form-control" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" value="{{ $aluno->cpf }}" required>
         </div>
 
         <div class="mb-3">

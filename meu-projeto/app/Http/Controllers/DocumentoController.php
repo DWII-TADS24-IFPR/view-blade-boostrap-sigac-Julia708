@@ -13,7 +13,8 @@ class DocumentoController extends Controller
      */
     public function index()
     {
-        //
+        $exs = ex::all();
+        return view('exs.index')->with('exs', $exs);
     }
 
     /**
@@ -21,7 +22,9 @@ class DocumentoController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('exs.create', compact('', ''));
+    
     }
 
     /**
@@ -29,7 +32,11 @@ class DocumentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ex::create([
+            'ex' => $request->ex,
+        ]);
+
+        return redirect()->route('exs.index');
     }
 
     /**
@@ -37,7 +44,8 @@ class DocumentoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $ex = ex::findOrFail($id);
+        return view('exs.show', compact('ex'));
     }
 
     /**
@@ -45,7 +53,8 @@ class DocumentoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $ex = ex::findOrFail($id);
+        return view('exs.edit', compact(''));
     }
 
     /**
@@ -53,7 +62,10 @@ class DocumentoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $ex = ex::findOrFail($id);
+        $ex->update($request->only(''));
+
+        return redirect()->route('exs.index')->with('success', 'ex atualizado com sucesso!');
     }
 
     /**
@@ -61,6 +73,9 @@ class DocumentoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $ex = ex::findOrFail($id);
+        $ex->delete();
+
+        return redirect()->route('exs.index');
     }
 }

@@ -13,7 +13,31 @@
       </li>
 
       <li class="nav-item">
-      <a class="nav-link" href="{{ route('alunos.index') }}">Alunos</a>
+      <a class="nav-link" href="{{ route('alunos.index') }}">Aluno</a>
+      </li>
+
+      <li class="nav-item">
+      <a class="nav-link" href="{{ route('categorias.index') }}">Categoria</a>
+      </li>
+
+      <li class="nav-item">
+      <a class="nav-link" href="">Comprovante</a>
+      </li>
+
+      <li class="nav-item">
+      <a class="nav-link" href="">Curso</a>
+      </li>
+
+      <li class="nav-item">
+      <a class="nav-link" href="">Declaração</a>
+      </li>
+      
+      <li class="nav-item">
+      <a class="nav-link" href="">Nível</a>
+      </li>
+      
+      <li class="nav-item">
+      <a class="nav-link" href="">Turma</a>
       </li>
       
     </ul>

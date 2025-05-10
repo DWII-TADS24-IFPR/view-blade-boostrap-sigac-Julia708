@@ -13,8 +13,8 @@ class ComprovanteController extends Controller
      */
     public function index()
     {
-        $comprovantes = Comprovante::all();
-        return view('comprovantes.index')->with('alunos', $alunos);
+        $exs = ex::all();
+        return view('exs.index')->with('exs', $exs);
     }
 
     /**
@@ -22,7 +22,9 @@ class ComprovanteController extends Controller
      */
     public function create()
     {
-        return view('comprovantes.create');
+
+        return view('exs.create', compact('', ''));
+    
     }
 
     /**
@@ -30,7 +32,11 @@ class ComprovanteController extends Controller
      */
     public function store(Request $request)
     {
-        
+        ex::create([
+            'ex' => $request->ex,
+        ]);
+
+        return redirect()->route('exs.index');
     }
 
     /**
@@ -38,7 +44,8 @@ class ComprovanteController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $ex = ex::findOrFail($id);
+        return view('exs.show', compact('ex'));
     }
 
     /**
@@ -46,7 +53,8 @@ class ComprovanteController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $ex = ex::findOrFail($id);
+        return view('exs.edit', compact(''));
     }
 
     /**
@@ -54,7 +62,10 @@ class ComprovanteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $ex = ex::findOrFail($id);
+        $ex->update($request->only(''));
+
+        return redirect()->route('exs.index')->with('success', 'ex atualizado com sucesso!');
     }
 
     /**
@@ -62,6 +73,9 @@ class ComprovanteController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $ex = ex::findOrFail($id);
+        $ex->delete();
+
+        return redirect()->route('exs.index');
     }
 }

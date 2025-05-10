@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
+use App\Models\Curso;
 
 class CategoriaController extends Controller
 {
@@ -14,7 +15,7 @@ class CategoriaController extends Controller
     public function index()
     {
         $categorias = Categoria::all();
-        return view('categorias.index')->with('categorias',$categorias);
+        return view('categorias.index')->with('categorias', $categorias);
     }
 
     /**
@@ -22,7 +23,10 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        return view('categoria.create');
+        $cursos = Curso::all();
+
+        return view('categorias.create', compact('cursos'));
+    
     }
 
     /**
@@ -30,10 +34,10 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        $categoria = new Categoria();
-        $categoria->nome = $request->$nome;
-        $categoria->max_horas = $request->$max_horas;
-        $categoria->save();
+        Categoria::create([
+            'nome' => $request->nome,
+            'max_horas' => $request->max_horas,
+        ]);
 
         return redirect()->route('categorias.index');
     }
@@ -44,7 +48,7 @@ class CategoriaController extends Controller
     public function show(string $id)
     {
         $categoria = Categoria::findOrFail($id);
-        return view('$categorias.show', compact('categoria'));
+        return view('categorias.show', compact('categoria'));
     }
 
     /**
@@ -53,7 +57,7 @@ class CategoriaController extends Controller
     public function edit(string $id)
     {
         $categoria = Categoria::findOrFail($id);
-        return view('$categorias.edit', compact('categoria'));
+        return view('categorias.edit', compact('categoria', 'cursos'));
     }
 
     /**
@@ -61,12 +65,10 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $categoria = Categoria::findOrFalil($id);
-        $categoria->nome = $request->$nome;
-        $categoria->max_horas = $request->$max_horas;
-        $categoria->save();
+        $categoria = Categoria::findOrFail($id);
+        $categoria->update($request->only('nome', 'max_horas'));
 
-        return redirect()->route('categorias.index');
+        return redirect()->route('categorias.index')->with('success', 'Categoria atualizada com sucesso!');
     }
 
     /**
