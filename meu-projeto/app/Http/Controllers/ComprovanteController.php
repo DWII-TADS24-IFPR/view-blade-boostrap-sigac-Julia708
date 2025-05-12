@@ -13,8 +13,8 @@ class ComprovanteController extends Controller
      */
     public function index()
     {
-        $exs = ex::all();
-        return view('exs.index')->with('exs', $exs);
+        $comprovantes = Comprovante::all();
+        return view('comprovantes.index')->with('comprovantes', $comprovantes);
     }
 
     /**
@@ -23,7 +23,7 @@ class ComprovanteController extends Controller
     public function create()
     {
 
-        return view('exs.create', compact('', ''));
+        return view('comprovantes.create', compact('', ''));
     
     }
 
@@ -32,11 +32,11 @@ class ComprovanteController extends Controller
      */
     public function store(Request $request)
     {
-        ex::create([
-            'ex' => $request->ex,
+        Comprovante::create([
+            'comprovante' => $request->comprovante,
         ]);
 
-        return redirect()->route('exs.index');
+        return redirect()->route('comprovantes.index');
     }
 
     /**
@@ -44,8 +44,8 @@ class ComprovanteController extends Controller
      */
     public function show(string $id)
     {
-        $ex = ex::findOrFail($id);
-        return view('exs.show', compact('ex'));
+        $comprovante = Comprovante::findOrFail($id); 
+        return view('comprovantes.show', compact('comprovantes'));
     }
 
     /**
@@ -53,8 +53,8 @@ class ComprovanteController extends Controller
      */
     public function edit(string $id)
     {
-        $ex = ex::findOrFail($id);
-        return view('exs.edit', compact(''));
+        $comprovante = Comprovante::findOrFail($id);
+        return view('comprovantes.edit', compact(''));
     }
 
     /**
@@ -62,10 +62,10 @@ class ComprovanteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $ex = ex::findOrFail($id);
-        $ex->update($request->only(''));
+        $comprovante = Comprovante::findOrFail($id);
+        $comprovante->update($request->only(''));
 
-        return redirect()->route('exs.index')->with('success', 'ex atualizado com sucesso!');
+        return redirect()->route('comprovantes.index')->with('success', 'Comprovantes atualizado com sucesso!');
     }
 
     /**
@@ -73,9 +73,9 @@ class ComprovanteController extends Controller
      */
     public function destroy(string $id)
     {
-        $ex = ex::findOrFail($id);
-        $ex->delete();
+        $comprovante = Comprovante::findOrFail($id);
+        $comprovante->delete();
 
-        return redirect()->route('exs.index');
+        return redirect()->route('comprovantes.index');
     }
 }

@@ -9,21 +9,15 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Nome</th>
-      <th scope="col">CPF</th>
-      <th scope="col">Curso</th>
-      <th scope="col">Turma</th>
     </tr>
   </thead>
 
     <thead>
-        <tr>
+        <tr>  
     <tbody>
         @foreach($alunos as $aluno)
             <td>{{ $aluno->id }}</td>
             <td>{{ $aluno->nome }}</td>
-            <td>{{ $aluno->cpf }}</td>
-            <td>{{ $aluno->curso->nome }}</td>
-            <td>{{ $aluno->turma->ano }}</td>
 
                 <td>
                     <a class="btn btn-warning" href="{{ route('alunos.edit', $aluno->id) }}">Editar</a>

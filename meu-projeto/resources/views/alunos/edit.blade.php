@@ -52,6 +52,10 @@
 
         <button type="submit" class="btn btn-primary">Atualizar</button>
         <a href="{{ route('alunos.index') }}" class="btn btn-secondary">Cancelar</a>
+        <form action="{{ route('alunos.destroy', $aluno->id) }}" method="POST" style="display:inline;">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class='btn btn-danger'>Excluir</button>
     </form>
 </div>
 @endsection

@@ -1,40 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Lista de Alunos</h1>
 
-<a href="{{ route('alunos.create') }}">Cadastrar Novo Aluno</a>
+<h2>Lista de cursos</h2>
 
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Nome</th>
-      <th scope="col">CPF</th>
-      <th scope="col">Curso</th>
-      <th scope="col">Turma</th>
     </tr>
   </thead>
 
     <thead>
         <tr>
     <tbody>
-        @foreach($alunos as $aluno)
-            <tr>
-                <td>{{ $aluno->nome }}</td>
-                <td>{{ $aluno->cpf }}</td>
-                <td>{{ $aluno->Curso }}</td>
-                <td>{{ $aluno->Turma }}</td>
+        @foreach($cursos as $curso)
+            <td>{{ $curso->id }}</td>
+            <td>{{ $curso->nome }}</td>
+
                 <td>
-                    <a href="{{ route('alunos.edit', $aluno->id) }}">Editar</a>
-                    <form action="{{ route('alunos.destroy', $aluno->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Excluir</button>
-                    </form>
+                    <a class="btn btn-warning" href="{{ route('cursos.edit', $curso->id) }}">Editar</a>
+                    <a class="btn btn-info" href="{{ route('cursos.show', $curso->id) }}">Mais informações</a>
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
+
+<a class="btn btn-primary" href="{{ route('cursos.create') }}">Cadastrar Novo curso</a>
+
 @endsection

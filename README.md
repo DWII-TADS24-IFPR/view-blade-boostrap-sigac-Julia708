@@ -6,7 +6,7 @@ Criar **interfaces completas com Blade (Laravel)** e **Bootstrap** para todos os
 
 ### Modelos que devem ter o CRUD implementado:
 
-- [ ] Aluno  
+- [x] Aluno  
 - [ ] Categoria  
 - [ ] Comprovante  
 - [ ] Curso  

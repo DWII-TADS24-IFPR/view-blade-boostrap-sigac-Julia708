@@ -1,17 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Lista de Categorias</h1>
 
-<a href="{{ route('categorias.create') }}">Cadastrar Nova Categoria</a>
+<h2>Lista de Categorias</h2>
 
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Nome</th>
-      <th scope="col">Máximo de Horas</th>
-      <th scope="col">Id do Curso</th>
     </tr>
   </thead>
 
@@ -19,21 +16,18 @@
         <tr>
     <tbody>
         @foreach($categorias as $categoria)
-            <tr>
-                <td>{{ $categoria->id }}</td>
-                <td>{{ $categoria->nome }}</td>
-                <td>{{ $categoria->max_horas }}</td>
-                <td>{{ $categoria->curso_id }}</td>
+            <td>{{ $categoria->id }}</td>
+            <td>{{ $categoria->nome }}</td>
+
                 <td>
-                    <a href="{{ route('categorias.edit', $categoria->id) }}">Editar</a>
-                    <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Excluir</button>
-                    </form>
+                    <a class="btn btn-warning" href="{{ route('categorias.edit', $categoria->id) }}">Editar</a>
+                    <a class="btn btn-info" href="{{ route('categorias.show', $categoria->id) }}">Mais informações</a>
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
+
+<a class="btn btn-primary" href="{{ route('categorias.create') }}">Cadastrar Novo categoria</a>
+
 @endsection

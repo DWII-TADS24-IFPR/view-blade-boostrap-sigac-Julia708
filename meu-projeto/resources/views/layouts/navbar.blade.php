@@ -21,11 +21,11 @@
       </li>
 
       <li class="nav-item">
-      <a class="nav-link" href="">Comprovante</a>
+      <a class="nav-link" href="{{ route('comprovantes.index') }}">Comprovante</a>
       </li>
 
       <li class="nav-item">
-      <a class="nav-link" href="">Curso</a>
+      <a class="nav-link" href="{{ route('cursos.index') }}">Curso</a>
       </li>
 
       <li class="nav-item">

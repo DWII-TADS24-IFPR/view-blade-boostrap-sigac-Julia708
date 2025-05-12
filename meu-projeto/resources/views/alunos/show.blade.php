@@ -18,10 +18,6 @@
         <div class="card-footer">
             <a href="{{ route('alunos.index') }}" class="btn btn-secondary">Voltar</a>
         </div>
-        <form action="{{ route('alunos.destroy', $aluno->id) }}" method="POST" style="display:inline;">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class='btn btn-danger'>Excluir</button>
     </div>
 </div>
 @endsection
