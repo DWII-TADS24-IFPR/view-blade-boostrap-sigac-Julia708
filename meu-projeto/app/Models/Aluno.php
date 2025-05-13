@@ -18,11 +18,11 @@ class Aluno extends Model
         return $this -> belongsTo(Curso::class);
     }
 
-    public function comprovante(){
+    public function comprovantes(){
         return $this -> hasMany(Comprovante::class);
     }
 
-    public function declaracao(){
+    public function declaracoes(){
         return $this -> hasMany(Declaracao::class);
     }
 }

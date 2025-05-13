@@ -14,11 +14,11 @@ class Categoria extends Model
         return $this -> belongsTo(Curso::class);
     }
 
-    public function documento(){
+    public function documentos(){
         return $this -> hasMany(Documento::class);
     }
 
-    public function comprovate(){
+    public function comprovates(){
         return $this -> hasMany(Comprovate::class);
     }
 }

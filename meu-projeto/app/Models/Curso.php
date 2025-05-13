@@ -14,15 +14,15 @@ class Curso extends Model
         return $this -> belongsTo(Nivel::class);
     }
 
-    public function aluno(){
+    public function alunos(){
         return $this -> hasMany(Aluno::class);
     }
 
-    public function categoria(){
+    public function categorias(){
         return $this -> hasMany(Categoria::class);
     }
 
-    public function turma(){
+    public function turmas(){
         return $this -> hasMany(Turma::class);
     }
 }
