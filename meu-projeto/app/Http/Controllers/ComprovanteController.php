@@ -1,77 +1,66 @@
-<?php
+<?PHP
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Comprovante;
+use App\Models\Aluno;
+use App\Models\Categoria;
+use Illuminate\Http\Request;
 
 class ComprovanteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $comprovantes = Comprovante::all();
         return view('comprovantes.index')->with('comprovantes', $comprovantes);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-
-        return view('comprovantes.create', compact('', ''));
-    
+        $alunos = Aluno::all();
+        $categorias = Categoria::all();
+        return view('comprovantes.create', compact('alunos', 'categorias'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        Comprovante::create([
-            'comprovante' => $request->comprovante,
-        ]);
+        $comprovante = new Comprovante();
+        $comprovante->horas = $request->horas;
+        $comprovante->atividade = $request->atividade;
+        $comprovante->categoria_id = $request->categoria_id;
+        $comprovante->aluno_id = $request->aluno_id;
+        $comprovante->save();
 
         return redirect()->route('comprovantes.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        $comprovante = Comprovante::findOrFail($id); 
-        return view('comprovantes.show', compact('comprovantes'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function show($id)
     {
         $comprovante = Comprovante::findOrFail($id);
-        return view('comprovantes.edit', compact(''));
+        return view('comprovantes.show')->with('comprovante', $comprovante);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function edit($id)
     {
         $comprovante = Comprovante::findOrFail($id);
-        $comprovante->update($request->only(''));
-
-        return redirect()->route('comprovantes.index')->with('success', 'Comprovantes atualizado com sucesso!');
+        $alunos = Aluno::all();
+        $categorias = Categoria::all();
+        return view('comprovantes.edit', compact('comprovante', 'alunos', 'categorias'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function update(Request $request, $id)
+    {
+        $comprovante = Comprovante::findOrFail($id);
+        $comprovante->horas = $request->horas;
+        $comprovante->atividade = $request->atividade;
+        $comprovante->categoria_id = $request->categoria_id;
+        $comprovante->aluno_id = $request->aluno_id;
+        $comprovante->save();
+
+        return redirect()->route('comprovantes.index');
+    }
+
+    public function destroy($id)
     {
         $comprovante = Comprovante::findOrFail($id);
         $comprovante->delete();
