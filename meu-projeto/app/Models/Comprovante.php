@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comprovante extends Model
 {
     protected $table = 'comprovantes';
-    protected $fillable = ['horas', 'atividade'];
+    protected $fillable = ['horas', 'atividade', 'categoria_id', 'aluno_id'];
 
     
     

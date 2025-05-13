@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Curso;
+use App\Models\Nivel;
 
 class CursoController extends Controller
 {
@@ -13,8 +14,8 @@ class CursoController extends Controller
      */
     public function index()
     {
-        $exs = ex::all();
-        return view('exs.index')->with('exs', $exs);
+        $cursos = Curso::all();
+        return view('cursos.index')->with('cursos', $cursos);
     }
 
     /**
@@ -22,8 +23,9 @@ class CursoController extends Controller
      */
     public function create()
     {
+        $nivel = Nivel::all();
 
-        return view('exs.create', compact('', ''));
+        return view('cursos.create', compact('nivels'));
     
     }
 
@@ -32,11 +34,14 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        ex::create([
-            'ex' => $request->ex,
+        curso::create([
+            'nome' => $request->nome,
+            'sigla' => $request->sigla,
+            'total_horas' => $request->total_horas,
+            'nivel_id' => $request->nivel_id,
         ]);
 
-        return redirect()->route('exs.index');
+        return redirect()->route('cursos.index');
     }
 
     /**
@@ -44,8 +49,8 @@ class CursoController extends Controller
      */
     public function show(string $id)
     {
-        $ex = ex::findOrFail($id);
-        return view('exs.show', compact('ex'));
+        $curso = curso::findOrFail($id);
+        return view('cursos.show', compact('curso'));
     }
 
     /**
@@ -53,8 +58,8 @@ class CursoController extends Controller
      */
     public function edit(string $id)
     {
-        $ex = ex::findOrFail($id);
-        return view('exs.edit', compact(''));
+        $curso = curso::findOrFail($id);
+        return view('cursos.edit', compact('curso', 'nivels'));
     }
 
     /**
@@ -62,10 +67,10 @@ class CursoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $ex = ex::findOrFail($id);
-        $ex->update($request->only(''));
+        $curso = curso::findOrFail($id);
+        $curso->update($request->only('nome', 'sigla', 'total_horas', 'nivel_id'));
 
-        return redirect()->route('exs.index')->with('success', 'ex atualizado com sucesso!');
+        return redirect()->route('cursos.index')->with('success', 'curso atualizado com sucesso!');
     }
 
     /**
@@ -73,9 +78,9 @@ class CursoController extends Controller
      */
     public function destroy(string $id)
     {
-        $ex = ex::findOrFail($id);
-        $ex->delete();
+        $curso = curso::findOrFail($id);
+        $curso->delete();
 
-        return redirect()->route('exs.index');
+        return redirect()->route('cursos.index')->with('success','Curso excluido com sucesso');
     }
 }

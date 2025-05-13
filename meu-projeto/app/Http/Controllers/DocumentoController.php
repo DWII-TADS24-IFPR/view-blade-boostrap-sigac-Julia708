@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Documento;
+use App\Models\Categoria;
 
 class DocumentoController extends Controller
 {
@@ -13,8 +14,8 @@ class DocumentoController extends Controller
      */
     public function index()
     {
-        $exs = ex::all();
-        return view('exs.index')->with('exs', $exs);
+        $documentos = Documento::all();
+        return view('documentos.index')->with('documentos', $documentos);
     }
 
     /**
@@ -22,8 +23,9 @@ class DocumentoController extends Controller
      */
     public function create()
     {
+        $categorias = Categoria::all();
 
-        return view('exs.create', compact('', ''));
+        return view('documentos.create', compact('categorias'));
     
     }
 
@@ -32,11 +34,17 @@ class DocumentoController extends Controller
      */
     public function store(Request $request)
     {
-        ex::create([
-            'ex' => $request->ex,
+        Documento::create([
+            'url' => $request->url,
+            'descricao' => $request->descricao,
+            'horas_in' => $request->horas_in,
+            'status' => $request->status,
+            'comentario' => $request->comentario,
+            'horas_out' => $request->horas_out,
+            'categoria_id' => $request->categoria_id,
         ]);
 
-        return redirect()->route('exs.index');
+        return redirect()->route('documentos.index');
     }
 
     /**
@@ -44,8 +52,8 @@ class DocumentoController extends Controller
      */
     public function show(string $id)
     {
-        $ex = ex::findOrFail($id);
-        return view('exs.show', compact('ex'));
+        $documento = Documento::findOrFail($id);
+        return view('documentos.show', compact('documemento'));
     }
 
     /**
@@ -53,8 +61,9 @@ class DocumentoController extends Controller
      */
     public function edit(string $id)
     {
-        $ex = ex::findOrFail($id);
-        return view('exs.edit', compact(''));
+        $documento = Documento::findOrFail($id);
+        $categoria = Categoria::all();
+        return view('documentos.edit', compact('documento', 'categorias'));
     }
 
     /**
@@ -62,10 +71,10 @@ class DocumentoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $ex = ex::findOrFail($id);
-        $ex->update($request->only(''));
+        $documento = Documento::findOrFail($id);
+        $documento->update($request->only('url', 'descricao', 'horas_in', 'status', 'comentario', 'horas_out', 'categoria_id'));
 
-        return redirect()->route('exs.index')->with('success', 'ex atualizado com sucesso!');
+        return redirect()->route('documentos.index')->with('success', 'documento atualizado com sucesso!');
     }
 
     /**
@@ -73,9 +82,9 @@ class DocumentoController extends Controller
      */
     public function destroy(string $id)
     {
-        $ex = ex::findOrFail($id);
-        $ex->delete();
+        $documento = Documento::findOrFail($id);
+        $documento->delete();
 
-        return redirect()->route('exs.index');
+        return redirect()->route('documentos.index');
     }
 }

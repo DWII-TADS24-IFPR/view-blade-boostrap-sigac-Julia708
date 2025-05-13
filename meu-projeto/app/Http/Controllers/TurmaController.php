@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Turma;
+use App\Models\Curso;
 
 class TurmaController extends Controller
 {
@@ -13,8 +14,8 @@ class TurmaController extends Controller
      */
     public function index()
     {
-        $exs = ex::all();
-        return view('exs.index')->with('exs', $exs);
+        $turmas = Turma::all();
+        return view('turmas.index')->with('turmas', $turmas);
     }
 
     /**
@@ -22,8 +23,9 @@ class TurmaController extends Controller
      */
     public function create()
     {
+        $cursos = Curso::all();
 
-        return view('exs.create', compact('', ''));
+        return view('turmas.create', compact('cursos'));
     
     }
 
@@ -32,11 +34,12 @@ class TurmaController extends Controller
      */
     public function store(Request $request)
     {
-        ex::create([
-            'ex' => $request->ex,
+        turma::create([
+            'ano' => $request->ano,
+            'curso_id' => $request->curso_id,
         ]);
 
-        return redirect()->route('exs.index');
+        return redirect()->route('turmas.index');
     }
 
     /**
@@ -44,8 +47,8 @@ class TurmaController extends Controller
      */
     public function show(string $id)
     {
-        $ex = ex::findOrFail($id);
-        return view('exs.show', compact('ex'));
+        $turma = turma::findOrFail($id);
+        return view('turmas.show', compact('turma'));
     }
 
     /**
@@ -53,8 +56,8 @@ class TurmaController extends Controller
      */
     public function edit(string $id)
     {
-        $ex = ex::findOrFail($id);
-        return view('exs.edit', compact(''));
+        $turma = turma::findOrFail($id);
+        return view('turmas.edit', compact('turma', 'cursos'));
     }
 
     /**
@@ -62,10 +65,10 @@ class TurmaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $ex = ex::findOrFail($id);
-        $ex->update($request->only(''));
+        $turma = turma::findOrFail($id);
+        $turma->update($request->only('ano', 'curso_id'));
 
-        return redirect()->route('exs.index')->with('success', 'ex atualizado com sucesso!');
+        return redirect()->route('turmas.index')->with('success', 'turmas atualizado com sucesso!');
     }
 
     /**
@@ -73,9 +76,9 @@ class TurmaController extends Controller
      */
     public function destroy(string $id)
     {
-        $ex = ex::findOrFail($id);
-        $ex->delete();
+        $turma = Turma::findOrFail($id);
+        $turma->delete();
 
-        return redirect()->route('exs.index');
+        return redirect()->route('turmas.index');
     }
 }

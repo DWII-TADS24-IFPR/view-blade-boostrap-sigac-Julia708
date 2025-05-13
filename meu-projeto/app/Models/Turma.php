@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Turma extends Model
 {
     protected $table = 'turmas';
-    protected $fillable = ['ano'];
+    protected $fillable = ['ano', 'curso_id'];
 
     public function curso(){
         return $this -> belongsTo(Curso::class);

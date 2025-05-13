@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Curso extends Model
 {
     protected $table = 'cursos';
-    protected $fillable = ['nome', 'sigla', 'total_horas'];
+    protected $fillable = ['nome', 'sigla', 'total_horas', 'nivel_id'];
 
     public function nivel(){
         return $this -> belongsTo(Nivel::class);

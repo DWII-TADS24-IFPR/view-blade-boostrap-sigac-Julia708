@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comprovante;
+use Illuminate\Http\Request;
 use App\Models\Aluno;
 use App\Models\Categoria;
-use Illuminate\Http\Request;
 
 class ComprovanteController extends Controller
 {
@@ -24,12 +24,12 @@ class ComprovanteController extends Controller
 
     public function store(Request $request)
     {
-        $comprovante = new Comprovante();
-        $comprovante->horas = $request->horas;
-        $comprovante->atividade = $request->atividade;
-        $comprovante->categoria_id = $request->categoria_id;
-        $comprovante->aluno_id = $request->aluno_id;
-        $comprovante->save();
+        Categoria::create([
+        'horas' => $request->horas,
+        'atividade' => $request->atividade,
+        'categoria_id' => $request->categoria_id,
+        'aluno_id' => $request->aluno_id,
+        ]);
 
         return redirect()->route('comprovantes.index');
     }
@@ -51,11 +51,7 @@ class ComprovanteController extends Controller
     public function update(Request $request, $id)
     {
         $comprovante = Comprovante::findOrFail($id);
-        $comprovante->horas = $request->horas;
-        $comprovante->atividade = $request->atividade;
-        $comprovante->categoria_id = $request->categoria_id;
-        $comprovante->aluno_id = $request->aluno_id;
-        $comprovante->save();
+        $comprovante->update($request->only('horas', 'atividade', 'categoria_id', 'aluno_id'));
 
         return redirect()->route('comprovantes.index');
     }

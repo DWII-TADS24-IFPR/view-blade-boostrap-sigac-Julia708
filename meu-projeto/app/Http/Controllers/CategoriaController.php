@@ -37,6 +37,7 @@ class CategoriaController extends Controller
         Categoria::create([
             'nome' => $request->nome,
             'max_horas' => $request->max_horas,
+            'curso_id' => $request->curso_id,
         ]);
 
         return redirect()->route('categorias.index');
@@ -66,7 +67,7 @@ class CategoriaController extends Controller
     public function update(Request $request, string $id)
     {
         $categoria = Categoria::findOrFail($id);
-        $categoria->update($request->only('nome', 'max_horas'));
+        $categoria->update($request->only('nome', 'max_horas', 'curso_id'));
 
         return redirect()->route('categorias.index')->with('success', 'Categoria atualizada com sucesso!');
     }
@@ -79,6 +80,6 @@ class CategoriaController extends Controller
         $categoria = Categoria::findOrFail($id);
         $categoria->delete();
 
-        return redirect()->route('categorias.index');
+        return redirect()->route('categorias.index')->with('success', 'Categoria excluido com sucesso!');
     }
 }
