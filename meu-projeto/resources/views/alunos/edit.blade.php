@@ -61,7 +61,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Atualizar</button>
-        <a href="{{ route('alunos.index') }}" class="btn btn-secondary">Cancelar</a>
+        <a href="{{ route('alunos.show', $aluno->id) }}" class="btn btn-secondary">Cancelar</a>
         <form action="{{ route('alunos.destroy', $aluno->id) }}" method="POST" style="display:inline;">
         @csrf
         @method('DELETE')

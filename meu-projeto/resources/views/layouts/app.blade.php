@@ -8,13 +8,15 @@
     <title>@yield('title', 'SIGAC')</title>
 </head>
 <body>
-    <div class="conteiner">
     <ul class="justify-content-center">
         <h1>Sistema de Gerenciamento de Atividades Complementares</h1>
     </ul>
+    <div class="d-flex flex-column min-vh-100">
     @include('layouts.navbar')
-        <@yield('content')
-    </div>
+        <main class="flex-grow-1 container py-4">
+            @yield('content')
+        </main>
     @include('layouts.footer')
+    </div>
 </body>
 </html>

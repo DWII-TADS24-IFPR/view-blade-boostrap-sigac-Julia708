@@ -13,6 +13,16 @@
             <input type="text" name="nome" id="nome" class="form-control" value="{{ $categoria->nome }}" required>
         </div>
 
+        <div class="mb-3">
+            <label for="max_horas" class="form-label">Maxímo de horas:</label>
+            <input type="text" name="max_horas" id="max_horas" class="form-control" value="{{ $categoria->max_horas }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="curso_id" class="form-label">Id do curso:</label>
+            <input type="number" name="curso_id" id="curso_id" class="form-control" value="{{ $categoria->curso_id }}" required>
+        </div>
+
         <button type="submit" class="btn btn-primary">Atualizar</button>
         <a href="{{ route('categorias.index') }}" class="btn btn-secondary">Cancelar</a>
         <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" style="display:inline;">

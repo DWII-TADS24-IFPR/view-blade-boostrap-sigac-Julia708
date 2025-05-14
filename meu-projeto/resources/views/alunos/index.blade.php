@@ -4,11 +4,12 @@
 
 <h2>Lista de Alunos</h2>
 
-<table class="table">
+<table class="table table-bordered text-center align-middle">
   <thead>
     <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Nome</th>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Ação</th>
     </tr>
   </thead>
 
@@ -20,7 +21,6 @@
             <td>{{ $aluno->nome }}</td>
 
                 <td>
-                    <a class="btn btn-warning" href="{{ route('alunos.edit', $aluno->id) }}">Editar</a>
                     <a class="btn btn-info" href="{{ route('alunos.show', $aluno->id) }}">Mais informações</a>
                 </td>
             </tr>
