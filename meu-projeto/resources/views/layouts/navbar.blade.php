@@ -29,15 +29,19 @@
       </li>
 
       <li class="nav-item">
-      <a class="nav-link" href="">Declaração</a>
+      <a class="nav-link" href="{{ route('declaracoes.index') }}">Declaração</a>
+      </li>
+
+      <li class="nav-item">
+      <a class="nav-link" href="{{ route('documentos.index') }}">Documento</a>
       </li>
       
       <li class="nav-item">
-      <a class="nav-link" href="">Nível</a>
+      <a class="nav-link" href="{{ route('nivels.index') }}">Nível</a>
       </li>
       
       <li class="nav-item">
-      <a class="nav-link" href="">Turma</a>
+      <a class="nav-link" href="{{ route('turmas.index') }}">Turma</a>
       </li>
       
     </ul>

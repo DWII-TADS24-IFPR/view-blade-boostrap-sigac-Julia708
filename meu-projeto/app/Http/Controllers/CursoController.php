@@ -23,7 +23,7 @@ class CursoController extends Controller
      */
     public function create()
     {
-        $nivel = Nivel::all();
+        $nivels = Nivel::all();
 
         return view('cursos.create', compact('nivels'));
     
@@ -59,6 +59,7 @@ class CursoController extends Controller
     public function edit(string $id)
     {
         $curso = curso::findOrFail($id);
+        $nivels = Nivel::all();
         return view('cursos.edit', compact('curso', 'nivels'));
     }
 

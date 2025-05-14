@@ -2,25 +2,25 @@
 
 @section('content')
 
-<h2>Lista de cursos</h2>
+<h2>Lista de Cursos</h2>
 
-<table class="table">
+<table class="table table-bordered text-center align-middle">
   <thead>
     <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Nome</th>
+      <th>Id</th>
+      <th>Atividade</th>
+      <th>Ação</th>
     </tr>
   </thead>
 
     <thead>
-        <tr>
+        <tr>  
     <tbody>
         @foreach($cursos as $curso)
             <td>{{ $curso->id }}</td>
             <td>{{ $curso->nome }}</td>
 
                 <td>
-                    <a class="btn btn-warning" href="{{ route('cursos.edit', $curso->id) }}">Editar</a>
                     <a class="btn btn-info" href="{{ route('cursos.show', $curso->id) }}">Mais informações</a>
                 </td>
             </tr>
@@ -28,6 +28,6 @@
     </tbody>
 </table>
 
-<a class="btn btn-primary" href="{{ route('cursos.create') }}">Cadastrar Novo curso</a>
+<a class="btn btn-primary" href="{{ route('cursos.create') }}">Cadastrar Novo Curso</a>
 
 @endsection

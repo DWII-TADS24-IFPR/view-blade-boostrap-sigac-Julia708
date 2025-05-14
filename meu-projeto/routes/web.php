@@ -6,7 +6,9 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ComprovanteController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DocumentoController;
+use App\Http\Controllers\DeclaracaoController;
 use App\Http\Controllers\TurmaController;
+use App\Http\Controllers\NivelController;
 
 /*
 |--------------------------------------------------------------------------

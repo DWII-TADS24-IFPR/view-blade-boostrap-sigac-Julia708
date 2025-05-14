@@ -61,8 +61,8 @@ class DeclaracaoController extends Controller
     public function edit(string $id)
     {
         $declaracao = Declaracao::findOrFail($id);
-        $aluno = Aluno::all();
-        $comprovante = Comprovante::all();
+        $alunos = Aluno::all();
+        $comprovantes = Comprovante::all();
         return view('declaracoes.edit', compact('declaracao', 'alunos', 'comprovantes'));
     }
 

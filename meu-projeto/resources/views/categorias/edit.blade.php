@@ -24,7 +24,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Atualizar</button>
-        <a href="{{ route('categorias.index') }}" class="btn btn-secondary">Cancelar</a>
+        <a href="{{ route('categorias.show', $categoria->id) }}" class="btn btn-secondary">Cancelar</a>
         <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" style="display:inline;">
         @csrf
         @method('DELETE')

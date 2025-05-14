@@ -53,7 +53,7 @@ class DocumentoController extends Controller
     public function show(string $id)
     {
         $documento = Documento::findOrFail($id);
-        return view('documentos.show', compact('documemento'));
+        return view('documentos.show', compact('documento'));
     }
 
     /**
@@ -62,7 +62,7 @@ class DocumentoController extends Controller
     public function edit(string $id)
     {
         $documento = Documento::findOrFail($id);
-        $categoria = Categoria::all();
+        $categorias = Categoria::all();
         return view('documentos.edit', compact('documento', 'categorias'));
     }
 

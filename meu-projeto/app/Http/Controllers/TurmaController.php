@@ -56,7 +56,8 @@ class TurmaController extends Controller
      */
     public function edit(string $id)
     {
-        $turma = turma::findOrFail($id);
+        $turma = Turma::findOrFail($id);
+        $cursos = Curso::all();
         return view('turmas.edit', compact('turma', 'cursos'));
     }
 

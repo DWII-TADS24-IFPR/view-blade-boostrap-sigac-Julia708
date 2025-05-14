@@ -1,40 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Lista de Alunos</h1>
 
-<a href="{{ route('alunos.create') }}">Cadastrar Novo Aluno</a>
+<h2>Lista de documentos</h2>
 
-<table class="table">
+<table class="table table-bordered text-center align-middle">
   <thead>
     <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Nome</th>
-      <th scope="col">CPF</th>
-      <th scope="col">Curso</th>
-      <th scope="col">Turma</th>
+      <th>Id</th>
+      <th>url</th>
+      <th>descricao</th>
+      <th>Ação</th>
     </tr>
   </thead>
 
     <thead>
-        <tr>
+        <tr>  
     <tbody>
-        @foreach($alunos as $aluno)
-            <tr>
-                <td>{{ $aluno->nome }}</td>
-                <td>{{ $aluno->cpf }}</td>
-                <td>{{ $aluno->Curso }}</td>
-                <td>{{ $aluno->Turma }}</td>
+        @foreach($documentos as $documento)
+            <td>{{ $documento->id }}</td>
+            <td>{{ $documento->url }}</td>
+            <td>{{ $documento->descricao }}</td>
+
                 <td>
-                    <a href="{{ route('alunos.edit', $aluno->id) }}">Editar</a>
-                    <form action="{{ route('alunos.destroy', $aluno->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Excluir</button>
-                    </form>
+                    <a class="btn btn-info" href="{{ route('documentos.show', $documento->id) }}">Mais informações</a>
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
+
+<a class="btn btn-primary" href="{{ route('documentos.create') }}">Cadastrar Novo documento</a>
+
 @endsection
